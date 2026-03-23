@@ -1,52 +1,195 @@
-🏗️ Архитектура проекта
-Проект построен по модульному принципу:
-components/: UI-компоненты (форма поиска и таблица пользователей).
-functions/: Чистые функции для работы с API (axios запросы).
-hooks/: Пользовательские хуки для кэширования и управления данными.
-settings/: Глобальные конфигурации (axios и queryClient).
-types/: Определение типов TypeScript.
-constants/: Константные значения проекта.
+# 🚀 Exam Gaba — Employee Registry System
 
-🛠 Основные возможности
-Глобальный поиск: Мгновенный поиск сотрудников по имени, фамилии, должности или IP-адресу через интегрированную поисковую панель.
-Умная пагинация: Быстрая навигация по страницам реестра с сохранением состояния запросов.
-Интерактивные контакты:
-Нажмите на Email, чтобы автоматически открыть почтовый клиент.
-Нажмите на Телефон, чтобы инициировать звонок (поддерживается на мобильных устройствах и десктопных приложениях).
-Безопасный просмотр: Финансовые данные (номер карты) отображаются в маскированном виде (только последние 4 цифры) для обеспечения конфиденциальности.
-📝 Как пользоваться интерфейсом
-Поиск данных: Введите ключевое слово в поле "Поиск по реестру..." в верхней части страницы и нажмите кнопку "Найти" или клавишу Enter.
-Сортировка: (Если включено) Нажмите на заголовок колонки (например, "Возраст"), чтобы отсортировать список по возрастанию или убыванию.
-Навигация: Используйте блок пагинации в нижней части таблицы для перехода между страницами. Система автоматически подгрузит новые данные через TanStack Query.
-Просмотр локации: Наведите курсор на город в колонке "Локация", чтобы увидеть полный адрес во всплывающей подсказке (Tooltip).
-⚙️ Техническое использование (для разработчиков)
-Для изменения количества элементов на странице, отредактируйте константу DEFAULT_PAGE_SIZE в файле UserTable.tsx.
-Все стили и темы (Dark/Light mode) настраиваются через ConfigProvider в корне компонента.
+🔗 **Live Demo:**
+👉 https://exam-gaba.vercel.app/
 
+---
 
-<!--  instruksiya -->
-При разработке проекта были использованы лучшие практики современной React-экосистемы для создания быстрого, масштабируемого и удобного интерфейса.
-1. 🔄 Управление данными (Data Fetching & Caching)
-TanStack Query (React Query): Центральное звено приложения. Используется для асинхронного получения данных, их кэширования и синхронизации с сервером. Это избавляет от лишних сетевых запросов при переключении между страницами.
-Stale-While-Revalidate: Данные обновляются в фоновом режиме, обеспечивая пользователю мгновенный отклик интерфейса.
-2. 🔍 Логика умного поиска (Search Architecture)
-Server-side Search: Поиск реализован на стороне сервера (API). При вводе данных запрос отправляется напрямую на эндпоинт /users/search?q=....
-Сброс пагинации: При каждом новом поиске система автоматически сбрасывает текущую страницу на 1-ю, чтобы пользователь не пропустил результаты, если он находился, например, на 10-й странице.
-3. 📄 Пагинация и внутренняя прокрутка (Pagination & Scroll)
-Динамические параметры: Параметры limit (кол-во элементов) и skip (отступ) рассчитываются динамически на основе текущей страницы, что обеспечивает точную синхронизацию с DummyJSON API.
-Internal Scroll: Поскольку в таблице более 10 колонок, реализована независимая горизонтальная и вертикальная прокрутка только тела таблицы (scroll: { x: 1800, y: ... }).
-Fixed Columns: Колонки "Сотрудник" и "Действие" закреплены по краям, что позволяет сохранять контекст при горизонтальном скролле.
-4. 🎨 Дизайн и UI/UX решения (Theming)
-Glassmorphism & Dark Mode: С помощью ConfigProvider от Ant Design создана глубокая темная тема с эффектами прозрачности и размытия (blur), что придает интерфейсу современный "стеклянный" вид.
-Интерактивные протоколы:
-Номера телефонов обернуты в протокол tel:.
-Email-адреса используют mailto:.
-Это позволяет взаимодействовать с системными приложениями (звонки, почта) в один клик.
-Скрытый скролл: Для визуальной чистоты стандартные полосы прокрутки скрыты через CSS, при этом функциональность скролла сохранена полностью.
-5. 🛡 Безопасность и типизация (Type Safety)
-Strict TypeScript: Для всех сущностей (User, Bank, Company) написаны строгие интерфейсы. Это исключает ошибки типа undefined или null на этапе разработки.
-Optional Chaining: Безопасное обращение к глубоко вложенным данным (например, record?.bank?.cardNumber) предотвращает аварийное завершение работы приложения (crash) при отсутствии данных от API.
+## 📌 About Project
 
+Exam Gaba — bu zamonaviy **Employee Registry (xodimlar ro‘yxati)** web ilova bo‘lib, tezkor qidiruv, pagination va interaktiv UI orqali ma’lumotlarni boshqarishni osonlashtiradi.
 
+Loyiha **clean architecture** va **modern React ecosystem** asosida qurilgan.
 
+---
 
+## 🏗️ Project Structure
+
+```bash
+src/
+│
+├── components/    # UI komponentlar (Table, Search)
+├── functions/     # API bilan ishlash (axios)
+├── hooks/         # Custom hooks (logic & caching)
+├── settings/      # Global config (queryClient, axios)
+├── types/         # TypeScript interfeyslar
+├── constants/     # Konstantalar
+```
+
+---
+
+## ✨ Features
+
+### 🔍 Global Search
+
+* Ism, familiya, lavozim yoki IP orqali qidiruv
+* Server-side search (API orqali)
+
+### 📄 Smart Pagination
+
+* Sahifalar bo‘ylab tez navigatsiya
+* React Query bilan cache saqlash
+
+### 📞 Interactive Contacts
+
+* 📧 Email → `mailto:` orqali ochiladi
+* 📱 Telefon → `tel:` orqali qo‘ng‘iroq
+
+### 🔐 Secure Data
+
+* Bank karta raqami mask qilinadi
+* Faqat oxirgi 4 ta raqam ko‘rinadi
+
+### 🎨 Modern UI
+
+* Dark Mode 🌙
+* Glassmorphism effect ✨
+* Smooth UX
+
+---
+
+## 🧑‍💻 How to Use
+
+### 🔎 Search
+
+* Qidiruv maydoniga yozing
+* `Enter` yoki **Search** tugmasini bosing
+
+### 📊 Sorting
+
+* Column header ustiga bosib saralash mumkin
+
+### 📑 Pagination
+
+* Pastdagi pagination orqali sahifalarni almashtiring
+
+### 📍 Tooltip
+
+* Location ustiga hover → to‘liq address chiqadi
+
+---
+
+## ⚙️ Tech Stack
+
+* ⚛️ React
+* 🧠 TypeScript
+* 🔥 TanStack Query (React Query)
+* 🌐 Axios
+* 🎨 Ant Design
+
+---
+
+## 🧠 Architecture & Best Practices
+
+### 🔄 Data Fetching
+
+* TanStack Query ishlatilgan
+* Stale-While-Revalidate strategiyasi
+* Minimal network request
+
+---
+
+### 🔍 Search System
+
+* Server-side search:
+
+```bash
+/users/search?q=...
+```
+
+* Har qidiruvda:
+
+```bash
+page → 1 ga reset
+```
+
+---
+
+### 📄 Pagination Logic
+
+```ts
+limit  // page size
+skip   // offset
+```
+
+* Dynamic hisoblanadi
+* API bilan sync ishlaydi
+
+---
+
+### 🎨 UI/UX
+
+* Glassmorphism design
+* Dark theme
+* Hidden scrollbar (clean UI)
+
+#### Interactive:
+
+* `tel:` → call
+* `mailto:` → email
+
+---
+
+### 🛡 Type Safety
+
+* Strict TypeScript
+* Optional chaining:
+
+```ts
+record?.bank?.cardNumber
+```
+
+👉 crash oldini oladi
+
+---
+
+## 📦 Installation
+
+```bash
+git clone https://github.com/your-username/exam-gaba.git
+cd exam-gaba
+npm install
+npm run dev
+```
+
+---
+
+## 🌍 Environment Variables
+
+```env
+VITE_BASE_URL=https://api.example.com
+```
+
+---
+
+## 🚀 Deployment
+
+Project deploy qilingan:
+👉 https://exam-gaba.vercel.app/
+
+---
+
+## 🎯 Summary
+
+Bu loyiha:
+
+* ⚡ Fast
+* 🧱 Scalable
+* 🧠 Clean Architecture
+* 🎨 Modern UI
+
+---
+
+## 👨‍💻 Author
+
+**Xurmatbek  Olloyorov (Uzbekistan)**
