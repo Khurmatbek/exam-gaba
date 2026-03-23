@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Table, ConfigProvider, theme } from 'antd';
 
 
@@ -24,9 +24,9 @@ const UsersTable: React.FC = () => {
   const total = data?.total ?? 0;
   const curPage = data ? Math.floor(data.skip / data.limit) + 1 : tableParams.page;
 
-  const handleSearch = () => {
-    setTableParams((prev) => ({ ...prev, searchQuery: searchInput, page: 1 }));
-  };
+const handleSearch = useCallback(() => {
+  setTableParams((prev) => ({ ...prev, searchQuery: searchInput, page: 1 }));
+}, [searchInput]);
 
   return (
     <ConfigProvider
