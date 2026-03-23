@@ -23,26 +23,6 @@ constants/: Константные значения проекта.
 Для изменения количества элементов на странице, отредактируйте константу DEFAULT_PAGE_SIZE в файле UserTable.tsx.
 Все стили и темы (Dark/Light mode) настраиваются через ConfigProvider в корне компонента.
 
-<!--  uz translate -->
-
-🛠 Asosiy imkoniyatlar
-Global qidiruv: Integratsiyalashgan qidiruv paneli orqali xodimlarni ismi, familiyasi, lavozimi yoki IP-manzili bo'yicha zumda topish imkoniyati.
-Aqlli paginatsiya: So'rovlar holatini saqlagan holda reyestr sahifalari bo'ylab tezkor harakatlanish.
-Interaktiv kontaktlar:
-Email ustiga bossangiz, pochta mijozi avtomatik ochiladi.
-Telefon raqami ustiga bossangiz, qo'ng'iroq qilish oynasi ochiladi (mobil qurilmalar va maxsus dasturlarda ishlaydi).
-Xavfsiz ko'rinish: Maxfiylikni ta'minlash uchun moliyaviy ma'lumotlar (karta raqami) yashirilgan holda (faqat oxirgi 4 ta raqam) ko'rsatiladi.
-📝 Interfeysdan qanday foydalaniladi?
-Ma'lumotlarni qidirish: Sahifaning yuqori qismidagi "Reyestr bo'yicha qidiruv..." maydoniga kalit so'zni kiriting va "Topish" tugmasini yoki Enter klaviaturasini bosing.
-Saralash: (Agar yoqilgan bo'lsa) Ro'yxatni o'sish yoki kamayish tartibida saralash uchun ustun sarlavhasiga (masalan, "Yoshi") bosing.
-Navigatsiya: Sahifalar o'rtasida o'tish uchun jadvalning pastki qismidagi paginatsiya blokidan foydalaning. Tizim yangi ma'lumotlarni TanStack Query orqali avtomatik yuklaydi.
-Manzilni ko'rish: "Lokatsiya" ustunidagi shahar ustiga sichqonchani olib borsangiz, qalqib chiquvchi yordamchi oyna (Tooltip) orqali to'liq manzilni ko'rishingiz mumkin.
-⚙️ Texnik foydalanish (Dasturchilar uchun)
-Sahifadagi elementlar sonini o'zgartirish uchun UserTable.tsx faylidagi DEFAULT_PAGE_SIZE o'zgarmas qiymatini tahrirlang.
-Barcha stillar va mavzular (Dark/Light mode) komponentning asosiy qismidagi ConfigProvider orqali sozlanadi.
-
-
-
 
 <!--  instruksiya -->
 При разработке проекта были использованы лучшие практики современной React-экосистемы для создания быстрого, масштабируемого и удобного интерфейса.

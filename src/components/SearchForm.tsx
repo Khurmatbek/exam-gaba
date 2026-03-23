@@ -2,7 +2,7 @@ import { SearchProps } from "@/types/types";
 import { SearchOutlined } from "@ant-design/icons";
 import { Button, Input } from "antd";
 
-export const SearchFormComponent = ({searchInput,setSearchInput,handleSearch}:SearchProps) => {
+ const SearchFormComponent = ({searchInput,setSearchInput,handleSearch}:SearchProps) => {
   return (
     <div className="justify-end py-2 rounded-2xl flex items-center gap-2 ">
       <Input
@@ -23,3 +23,4 @@ export const SearchFormComponent = ({searchInput,setSearchInput,handleSearch}:Se
     </div>
   );
 };
+export default SearchFormComponent;

@@ -45,3 +45,12 @@ export interface SearchProps {
   setSearchInput: React.Dispatch<React.SetStateAction<string>>;
   handleSearch: () => void;
 }
+
+export type Props = {
+  children: ReactNode;
+  onError?: (error: Error, errorInfo: React.ErrorInfo) => void;
+};
+
+export type State = {
+  hasError: boolean;
+};

@@ -6,7 +6,8 @@ import { Table, ConfigProvider, theme } from 'antd';
 import { TableParams, User } from '@/types/types';
 import { useUsers } from '@/hooks/useFetchUsers';
 import { columns } from '@/constants/constants';
-import { SearchFormComponent } from './SearchForm';
+import { UserSearchForm } from '.';
+
 
 const DEFAULT_PAGE_SIZE = 8;
 
@@ -38,7 +39,7 @@ const UsersTable: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Search Integrated Row */}
-              <SearchFormComponent
+              <UserSearchForm
                 searchInput={searchInput}
                 setSearchInput={setSearchInput}
                 handleSearch={handleSearch}
